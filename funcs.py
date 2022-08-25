@@ -60,7 +60,7 @@ def checkCode():
     print('-'*40)
     print()
     name = input("Enter The Name of Your Country : ").strip().title()
-    files = open('files\codes.csv', 'r', newline='')
+    files = open('files/codes.csv', 'r', newline='')
     codeReader = csv.DictReader(files, ['Name','Alpha-2','Alpha-3','Country-code','Iso_3166-2','Region','Sub-region','Intermediate-region','Region-code','Sub-region-code','Intermediate-region-code'])
 
     for codes in codeReader:
@@ -73,7 +73,7 @@ def checkCode():
 
 # TODO : Check Country Name
 def findCountry(code):
-    files = open('files\codes.csv', 'r', newline='')
+    files = open('files/codes.csv', 'r', newline='')
     codeReader = csv.DictReader(files, ['Name','Alpha-2','Alpha-3','Country-code','Iso_3166-2','Region','Sub-region','Intermediate-region','Region-code','Sub-region-code','Intermediate-region-code'])
 
     for codes in codeReader:
