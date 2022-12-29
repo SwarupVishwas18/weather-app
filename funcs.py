@@ -2,7 +2,7 @@
 
 import csv, json
 from colorama import Fore
-import requests, normal, sys
+import requests, normal, sys, geocoder
 
 APP_ID = "2b1520594578e63d1640ee6f3cb0525a"
 
@@ -94,3 +94,27 @@ def printData(jsonData):
     print("Name of City : ", dictData['name'])
     print("Name of Country : ", findCountry(dictData['sys']['country']))
     print("Time Zone -> ", (dictData['timezone']//3600),' : ',((dictData['timezone']%3600)//60), " hr")
+
+
+def checkCurrent():
+    print()
+    print('-'*40)
+    print()
+    (lat, lon)= tuple(geocoder.ip('me').latlng)
+    
+    url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={APP_ID}&units=metric"
+    
+    try:
+        response = requests.get(url=url)
+    except:
+        print(Fore.RED)
+        print("You don't have internet connection..!!")
+        normal.quitMe()
+    try:
+        response.raise_for_status()
+    except:
+        print(Fore.RED)
+        print("Something Went Wrong")
+        return None
+    print(Fore.YELLOW)
+    printData(response.text)

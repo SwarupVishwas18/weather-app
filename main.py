@@ -3,21 +3,25 @@
 from colorama import Fore
 import normal, funcs
 
+label = True
 
 try:
-    while True:
+    while label:
         normal.printBrand("Weather-App")
-        ch = normal.myMenu(["Check Via City Name","Check Via Zip Code","Find Your Country Code","About Me","Exit"])
+        ch = normal.myMenu(["Check Current Weather","Check Via City Name","Check Via Zip Code","Find Your Country Code","About Me","Exit"])
 
         if ch == 1:
-            funcs.checkViaName()
+            funcs.checkCurrent()
         elif ch == 2:
-            funcs.checkViaZipCode()
+            funcs.checkViaName()
         elif ch == 3:
-            funcs.checkCode()
+            funcs.checkViaZipCode()
         elif ch == 4:
-            normal.aboutMe()
+            funcs.checkCode()
         elif ch == 5:
+            normal.aboutMe()
+        elif ch == 6:
             normal.quitMe()
+            label = False
 except:
     normal.quitMe()

@@ -56,7 +56,6 @@ def quitMe():
     print("#"*50)
     print()
     print(Fore.WHITE)
-    exit()
 
 # About Me
 def aboutMe():
